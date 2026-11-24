@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2027 송림학원 예비중3 학부모 설명회</title>
-<meta name="description" content="2026년 12월 1일(화) 오전 11시 · 서초송림학원 4층 | 학생과 학부모를 위한 대화 설명회">
+<meta name="description" content="1차 12/1(화) 오전 11시 · 2차 12/4(금) 오후 7시 · 3차 12/9(수) 오후 1시 · 서초송림학원 4층 | 고등학교 1등급의 승부는 중3에서 시작됩니다!">
 <!-- 카카오톡·문자 링크 미리보기 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="송림학원">
 <meta property="og:title" content="2027 송림학원 예비중3 학부모 설명회">
-<meta property="og:description" content="12월 1일(화) 오전 11시 · 서초송림학원 4층 | 눌러서 신청하기">
+<meta property="og:description" content="1차 12/1(화) 오전 11시 · 2차 12/4(금) 오후 7시 · 3차 12/9(수) 오후 1시 | 원하는 회차를 선택해 신청하세요">
 <meta property="og:image" content="https://lh3.googleusercontent.com/d/1ddBbD6na4NsWCFFY3MDmrGl34HfIBT06=w1200">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -62,9 +62,13 @@
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .choices.stack{grid-template-columns:1fr}
+  .choice input:disabled + span{opacity:.45;text-decoration:line-through;cursor:default}
+  .choice .tag{display:inline-block;min-width:34px;margin-right:8px;font-weight:800}
+  .info .times{display:block;line-height:1.75}
+  .done .sess{font-weight:700;color:var(--green);margin:4px 0 2px}
   .choice{position:relative}
   .choice input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-  .choice span{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;text-align:center;transition:all .12s}
+  .choice > span{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;text-align:center;transition:all .12s}
   .choice input:checked + span{border-color:var(--green);background:var(--green-l);color:var(--green);font-weight:700}
   .choice input:focus-visible + span{box-shadow:0 0 0 3px rgba(33,76,67,.2)}
 
@@ -141,10 +145,10 @@
     <img class="hero-photo" src="https://lh3.googleusercontent.com/d/1ddBbD6na4NsWCFFY3MDmrGl34HfIBT06=w1200" alt="송림학원 전경" referrerpolicy="no-referrer" onerror="this.remove()">
     <div class="eyebrow">SONGRIM ADMISSIONS</div>
     <h1>2027 송림학원 예비중3 학부모 설명회</h1>
-    <p class="subtitle">학생과 학부모를 위한 대화 설명회</p>
+    <p class="subtitle">고등학교 1등급의 승부는 중3에서 시작됩니다!</p>
     <dl class="info">
       <div><dt>연사</dt><dd>송림학원 최강 강사진</dd></div>
-      <div><dt>일시</dt><dd>2026년 12월 01일 (화) 오전 11시</dd></div>
+      <div><dt>일정</dt><dd><span class="times">1차 · 12월 1일 (화) 오전 11시<br>2차 · 12월 4일 (금) 오후 7시<br>3차 · 12월 9일 (수) 오후 1시</span></dd></div>
       <div><dt>장소</dt><dd>서초송림학원 4층</dd></div>
     </dl>
     <p class="desc">신청하신 분께는 입력하신 연락처로 설명회 안내를 보내 드립니다.</p>
@@ -164,7 +168,16 @@
         <div class="sec-eyebrow">SONGRIM ACADEMY REGISTRATION</div>
         <h2>설명회 신청</h2>
         <p class="lead">아래 학생 정보를 입력해 주세요.</p>
-        <div class="mini-info"><b>2027 송림학원 예비중3 학부모 설명회</b><br>2026년 12월 01일 (화) 오전 11시 · 서초송림학원 4층</div>
+        <div class="mini-info"><b>2027 송림학원 예비중3 학부모 설명회</b><br>총 3회 진행 · 서초송림학원 4층 · 편하신 회차 하나를 골라 주세요</div>
+
+        <div class="field">
+          <span class="label">참석 회차<span class="req">*</span></span>
+          <div class="choices stack" id="sessionChoices">
+            <label class="choice"><input type="radio" name="sessionId" value="session1" data-start="2026-12-01T11:00:00+09:00"><span><span class="tag">1차</span>12월 1일 (화) 오전 11시</span></label>
+            <label class="choice"><input type="radio" name="sessionId" value="session2" data-start="2026-12-04T19:00:00+09:00"><span><span class="tag">2차</span>12월 4일 (금) 오후 7시</span></label>
+            <label class="choice"><input type="radio" name="sessionId" value="session3" data-start="2026-12-09T13:00:00+09:00"><span><span class="tag">3차</span>12월 9일 (수) 오후 1시</span></label>
+          </div>
+        </div>
 
         <div class="field">
           <label class="label" for="studentName">학생명<span class="req">*</span></label>
@@ -235,7 +248,8 @@
       <div id="done" class="done" hidden>
         <div class="check">✓</div>
         <h2>신청이 완료되었습니다</h2>
-        <p class="lead">설명회 당일 뵙겠습니다. 감사합니다.</p>
+        <p class="sess" id="doneSession"></p>
+        <p class="lead">서초송림학원 4층에서 뵙겠습니다. 감사합니다.</p>
         <div>접수번호</div>
         <div class="rid" id="rid"></div>
         <button type="button" class="btn ghost" id="again">다른 학생 추가 신청</button>
@@ -279,12 +293,11 @@
   var SHARE = {
     title: '2027 송림학원 예비중3 학부모 설명회',
     speaker: '송림학원 최강 강사진',
-    date: '2026년 12월 01일 (화) 오전 11시',
+    dates: ['1차 12월 1일 (화) 오전 11시', '2차 12월 4일 (금) 오후 7시', '3차 12월 9일 (수) 오후 1시'],
     venue: '서초송림학원 4층',
     url: 'https://songrimedu.github.io/songrim/',
     image: 'https://lh3.googleusercontent.com/d/1ddBbD6na4NsWCFFY3MDmrGl34HfIBT06=w1200'
   };
-  // 카카오 개발자센터 '웹 도메인' 등록에 필요한 주소를 콘솔(F12)에 표시합니다.
   var kakaoReady = false;
   try {
     if (KAKAO_KEY && window.Kakao) {
@@ -320,6 +333,7 @@
   function radio(name) { var r = form.querySelector('input[name="'+name+'"]:checked'); return r ? r.value : ''; }
   function phoneOk(v) { return /^01[016789]\d{7,8}$/.test(v.replace(/\D/g, '')); }
   function check(p) {
+    if (!p.sessionId) return ['참석하실 회차를 선택해 주세요.'];
     if (!p.studentName) return ['학생명을 입력해 주세요.', 'studentName'];
     if (!p.school) return ['학교명을 입력해 주세요.', 'school'];
     if (!p.grade) return ['현재 학년을 선택해 주세요.', 'grade'];
@@ -336,6 +350,7 @@
     msg.textContent = '';
     var p = {
       requestId: requestId,
+      sessionId: radio('sessionId'),
       studentName: $('studentName').value.trim(),
       school: $('school').value.trim(),
       grade: $('grade').value,
@@ -361,6 +376,7 @@
         btn.disabled = false; btn.textContent = '설명회 신청하기';
         if (res && res.ok) {
           $('rid').textContent = res.receiptId;
+          $('doneSession').textContent = res.session ? res.session + ' 설명회' : '';
           form.hidden = true; $('done').hidden = false;
           $('apply').scrollIntoView();
         } else {
@@ -384,7 +400,7 @@
     '[송림학원] ' + SHARE.title,
     '',
     '· 연사: ' + SHARE.speaker,
-    '· 일시: ' + SHARE.date,
+    '· 일정: ' + SHARE.dates.join(' / '),
     '· 장소: ' + SHARE.venue,
     '',
     '아래 링크에서 신청하실 수 있습니다.',
@@ -415,7 +431,7 @@
 
   function kakaoShare() {
     var link = { mobileWebUrl: SHARE.url, webUrl: SHARE.url };
-    var desc = SHARE.date + '\n' + SHARE.venue;
+    var desc = SHARE.dates.join('\n') + '\n' + SHARE.venue;
     if (SHARE.image) {
       Kakao.Share.sendDefault({
         objectType: 'feed',
@@ -456,11 +472,30 @@
   $('modal').addEventListener('click', function (e) { if (e.target === this) closeModal(); });
 
   // 먼저 신청 양식을 보여 주고, 서버에서 접수 마감(closeRegistration) 상태면 마감 안내로 바꿉니다.
+  // 시작 시각이 지난 회차는 선택할 수 없게 표시합니다.
+  function closeSession(input) {
+    input.disabled = true; input.checked = false;
+    var tag = input.nextElementSibling;
+    if (tag && tag.textContent.indexOf('(마감)') < 0) tag.appendChild(document.createTextNode(' (마감)'));
+  }
+  function allSessionsClosed() {
+    return !form.querySelector('input[name="sessionId"]:not(:disabled)');
+  }
+  function showClosed() { form.hidden = true; $('closed').hidden = false; }
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="sessionId"]'), function (el) {
+    if (Date.now() >= Date.parse(el.getAttribute('data-start'))) closeSession(el);
+  });
   form.hidden = false;
+  if (allSessionsClosed()) showClosed();
   fetch(API_URL + '?status=1', { redirect: 'follow' })
     .then(function (r) { return r.json(); })
     .then(function (s) {
-      if (s && s.open === false) { form.hidden = true; $('closed').hidden = false; }
+      if (!s) return;
+      (s.sessions || []).forEach(function (x) {
+        var el = form.querySelector('input[name="sessionId"][value="' + x.id + '"]');
+        if (el && x.open === false) closeSession(el);
+      });
+      if (s.open === false || allSessionsClosed()) showClosed();
     })
     .catch(function () { /* 상태 확인 실패 시 양식 유지 (서버가 다시 한 번 확인함) */ });
 </script>
