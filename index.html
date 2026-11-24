@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2027 송림학원 예비중3 학부모 설명회</title>
-<meta name="description" content="2026년 12월 01일 (화) 오전 11시 · 서초송림학원 4층 | 지금 신청하세요">
-
+<meta name="description" content="2026년 12월 1일(화) 오전 11시 · 서초송림학원 4층 | 학생과 학부모를 위한 대화 설명회">
 <!-- 카카오톡·문자 링크 미리보기 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="송림학원">
@@ -14,19 +13,456 @@
 <meta property="og:image" content="https://lh3.googleusercontent.com/d/1ddBbD6na4NsWCFFY3MDmrGl34HfIBT06=w1200">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
-<!-- 열면 바로 신청 화면으로 이동 -->
-<meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycby78awOwl74tBuQ7gcKAB7-ATuNLiHwGjxi2H-JdhjNgNnjiUboq0bdbmpR4fOVh7g/exec">
 <style>
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#214c43;color:#fff;font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;text-align:center}
-  a{color:#c9a45c;font-weight:700}
+  :root{
+    --green:#214c43; --green-d:#173a33; --green-l:#e8f0ee;
+    --gold:#c9a45c; --ink:#1d2b28; --sub:#5b6b66; --line:#dbe3e0; --bg:#f4f6f5; --err:#c0392b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","Noto Sans KR",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;word-break:keep-all}
+  a{color:inherit}
+  .container{max-width:640px;margin:0 auto;padding:0 18px}
+
+  /* 상단 바 */
+  .topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .topbar .container{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .brand{font-weight:800;font-size:18px;color:var(--green);letter-spacing:-.01em}
+  .brand small{display:block;font-size:10px;font-weight:600;letter-spacing:.16em;color:var(--sub);margin-top:-2px}
+  .topbar a.cta{font-size:14px;font-weight:700;color:#fff;background:var(--green);padding:8px 14px;border-radius:999px;text-decoration:none}
+
+  /* 행사 소개 */
+  .hero{background:linear-gradient(160deg,var(--green) 0%,var(--green-d) 100%);color:#fff;padding:40px 0 44px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--gold)}
+  .hero h1{font-size:27px;line-height:1.35;margin:10px 0 6px;letter-spacing:-.02em}
+  .hero .subtitle{font-size:16px;opacity:.85;margin:0 0 26px}
+  .info{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:6px 18px}
+  .info div{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px}
+  .info div:last-child{border-bottom:0}
+  .info dt{flex:0 0 44px;color:var(--gold);font-weight:700}
+  .info dd{margin:0}
+  .hero .desc{font-size:14px;opacity:.85;margin:20px 0 0}
+  .hero .tagline{margin:18px 0 0;font-size:15px;font-weight:700;color:var(--gold)}
+
+  /* 신청 카드 */
+  section{padding:28px 0}
+  .card{background:#fff;border-radius:16px;padding:26px 22px;box-shadow:0 2px 10px rgba(23,58,51,.06)}
+  .sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--green);opacity:.7}
+  .card h2{font-size:22px;margin:6px 0 4px}
+  .card .lead{color:var(--sub);font-size:14px;margin:0 0 14px}
+  .mini-info{background:var(--green-l);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--green);margin-bottom:22px}
+  .mini-info b{font-weight:700}
+
+  .field{margin-bottom:18px}
+  .label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}
+  .req{color:var(--err);margin-left:2px}
+  input[type=text],input[type=tel],select{width:100%;height:48px;padding:0 14px;border:1px solid var(--line);border-radius:10px;font-size:16px;background:#fff;color:var(--ink);font-family:inherit;-webkit-appearance:none;appearance:none}
+  select{background-image:linear-gradient(45deg,transparent 50%,var(--sub) 50%),linear-gradient(135deg,var(--sub) 50%,transparent 50%);background-position:calc(100% - 20px) 21px,calc(100% - 15px) 21px;background-size:5px 5px;background-repeat:no-repeat}
+  input:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(33,76,67,.15)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .choices.stack{grid-template-columns:1fr}
+  .choice{position:relative}
+  .choice input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+  .choice span{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;text-align:center;transition:all .12s}
+  .choice input:checked + span{border-color:var(--green);background:var(--green-l);color:var(--green);font-weight:700}
+  .choice input:focus-visible + span{box-shadow:0 0 0 3px rgba(33,76,67,.2)}
+
+  .consent{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:24px 0 18px}
+  .agree{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;cursor:pointer}
+  .agree input{width:20px;height:20px;accent-color:var(--green);flex:0 0 auto}
+  details{margin-top:8px}
+  summary{font-size:13px;color:var(--sub);text-decoration:underline;cursor:pointer;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  .terms{margin:10px 0 0;padding:12px 14px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--sub)}
+  .terms dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:6px 8px}
+  .terms dt{font-weight:700;color:var(--ink)}
+  .terms dd{margin:0}
+  .terms p{margin:10px 0 0}
+
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .btn{display:block;width:100%;height:54px;border:0;border-radius:12px;background:var(--green);color:#fff;font-size:17px;font-weight:800;cursor:pointer;font-family:inherit}
+  .btn:disabled{opacity:.55;cursor:default}
+  .btn.ghost{background:#fff;color:var(--green);border:1px solid var(--green)}
+  .note{text-align:center;font-size:12.5px;color:var(--sub);margin:10px 0 0}
+  .msg{color:var(--err);font-size:14px;font-weight:600;margin:12px 0 0;min-height:20px;text-align:center}
+
+  .done{text-align:center;padding:10px 0}
+  .done .check{width:56px;height:56px;border-radius:50%;background:var(--green-l);color:var(--green);display:inline-flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+  .done h2{margin:14px 0 6px}
+  .done .rid{display:inline-block;margin:10px 0 18px;padding:10px 18px;background:var(--green-l);color:var(--green);font-weight:800;border-radius:10px;letter-spacing:.03em}
+  .closed{text-align:center;padding:16px 0}
+
+  /* 공유 */
+  .share h2{font-size:19px;margin:0 0 4px}
+  .share p{color:var(--sub);font-size:14px;margin:0 0 16px}
+  .kakao{background:#fee500;color:#191919}
+  .share .btn + .btn{margin-top:10px}
+  .share .fallback{font-size:12.5px;color:var(--sub);margin:12px 0 0;text-align:center}
+
+  /* 사진 */
+  .hero.has-photo{position:relative;background:var(--green-d)}
+  .hero-photo{width:100%;aspect-ratio:16/9;max-height:360px;object-fit:cover;display:block;border-radius:14px;margin:0 0 24px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .gallery h2{font-size:19px;margin:0 0 14px}
+  .gallery .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .gallery .grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;background:var(--line)}
+  .gallery .grid img:only-child{grid-column:1/-1;aspect-ratio:16/9}
+
+  footer{text-align:center;color:var(--sub);font-size:12px;padding:20px 0 40px}
+
+  /* 모달 */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+  .sheet{background:#fff;width:100%;max-width:640px;border-radius:18px 18px 0 0;padding:22px 20px 26px}
+  .sheet h3{margin:0 0 4px;font-size:18px}
+  .sheet p{margin:0 0 12px;color:var(--sub);font-size:14px}
+  .sheet textarea{width:100%;height:190px;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:14px;font-family:inherit;resize:none;background:var(--bg)}
+  .sheet .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:rgba(20,30,28,.92);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:30}
+  [hidden]{display:none!important}
+
+  @media (min-width:640px){
+    .hero h1{font-size:32px}
+    .modal{align-items:center}
+    .sheet{border-radius:18px}
+  }
 </style>
 </head>
 <body>
-  <div>
-    <p>송림학원 설명회 신청 화면으로 이동 중입니다…</p>
-    <p><a href="https://script.google.com/macros/s/AKfycby78awOwl74tBuQ7gcKAB7-ATuNLiHwGjxi2H-JdhjNgNnjiUboq0bdbmpR4fOVh7g/exec">이동하지 않으면 여기를 눌러 주세요</a></p>
+
+<div class="topbar">
+  <div class="container">
+    <div class="brand">송림학원<small>SONGRIM ADMISSIONS</small></div>
+    <a class="cta" href="#apply" id="topCta">설명회 신청</a>
   </div>
-  <script>location.replace('https://script.google.com/macros/s/AKfycby78awOwl74tBuQ7gcKAB7-ATuNLiHwGjxi2H-JdhjNgNnjiUboq0bdbmpR4fOVh7g/exec');</script>
+</div>
+
+<div class="hero has-photo">
+  <div class="container">
+    <img class="hero-photo" src="https://lh3.googleusercontent.com/d/1ddBbD6na4NsWCFFY3MDmrGl34HfIBT06=w1200" alt="송림학원 전경" referrerpolicy="no-referrer" onerror="this.remove()">
+    <div class="eyebrow">SONGRIM ADMISSIONS</div>
+    <h1>2027 송림학원 예비중3 학부모 설명회</h1>
+    <p class="subtitle">학생과 학부모를 위한 대화 설명회</p>
+    <dl class="info">
+      <div><dt>연사</dt><dd>송림학원 최강 강사진</dd></div>
+      <div><dt>일시</dt><dd>2026년 12월 01일 (화) 오전 11시</dd></div>
+      <div><dt>장소</dt><dd>서초송림학원 4층</dd></div>
+    </dl>
+    <p class="desc">신청하신 분께는 입력하신 연락처로 설명회 안내를 보내 드립니다.</p>
+    <p class="tagline">학생의 내일을 함께 준비합니다.</p>
+  </div>
+</div>
+
+<section id="apply">
+  <div class="container">
+    <div class="card">
+      <div id="closed" class="closed" hidden>
+        <h2>설명회 접수가 마감되었습니다</h2>
+        <p class="lead">관심 가져 주셔서 감사합니다. 문의는 학원으로 연락해 주세요.</p>
+      </div>
+
+      <form id="form" novalidate hidden>
+        <div class="sec-eyebrow">SONGRIM ACADEMY REGISTRATION</div>
+        <h2>설명회 신청</h2>
+        <p class="lead">아래 학생 정보를 입력해 주세요.</p>
+        <div class="mini-info"><b>2027 송림학원 예비중3 학부모 설명회</b><br>2026년 12월 01일 (화) 오전 11시 · 서초송림학원 4층</div>
+
+        <div class="field">
+          <label class="label" for="studentName">학생명<span class="req">*</span></label>
+          <input type="text" id="studentName" maxlength="30" autocomplete="off" placeholder="학생 이름">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label class="label" for="school">학교<span class="req">*</span></label>
+            <input type="text" id="school" maxlength="60" placeholder="예) 서초중">
+          </div>
+          <div class="field">
+            <label class="label" for="grade">현재 학년<span class="req">*</span></label>
+            <select id="grade">
+              <option value="">학년 선택</option>
+              <option>중2</option><option>중3</option><option>중1</option>
+              <option>고1</option><option>고2</option><option>고3</option>
+              <option>N수</option><option>기타</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">성별<span class="req">*</span></span>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="gender" value="남학생"><span>남학생</span></label>
+            <label class="choice"><input type="radio" name="gender" value="여학생"><span>여학생</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="studentPhone">학생 연락처<span class="req">*</span></label>
+          <input type="tel" id="studentPhone" inputmode="numeric" maxlength="13" placeholder="010-0000-0000">
+        </div>
+        <div class="field">
+          <label class="label" for="parentPhone">학부모 연락처<span class="req">*</span></label>
+          <input type="tel" id="parentPhone" inputmode="numeric" maxlength="13" placeholder="010-0000-0000">
+        </div>
+        <div class="field">
+          <span class="label">재원 여부<span class="req">*</span></span>
+          <div class="choices stack">
+            <label class="choice"><input type="radio" name="registered" value="등록"><span>수업 들어본 적 있어요</span></label>
+            <label class="choice"><input type="radio" name="registered" value="신규"><span>송림학원이 처음이에요</span></label>
+          </div>
+        </div>
+
+        <div class="hp" aria-hidden="true"><label>웹사이트<input type="text" id="website" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="consent">
+          <label class="agree"><input type="checkbox" id="consent">개인정보 수집·이용에 동의합니다. (필수)</label>
+          <details>
+            <summary>수집·이용 내용 확인</summary>
+            <div class="terms">
+              <dl>
+                <dt>수집 주체</dt><dd>송림학원</dd>
+                <dt>이용 목적</dt><dd>설명회 신청 접수, 참석 안내 및 관련 연락</dd>
+                <dt>수집 항목</dt><dd>학생명, 학교, 현재 학년, 성별, 학생 연락처, 학부모 연락처, 재원 여부</dd>
+                <dt>보관 기간</dt><dd>신청일로부터 90일 보관 후 파기</dd>
+                <dt>동의 거부</dt><dd>동의를 거부할 수 있으나, 거부 시 온라인 신청이 어렵습니다.</dd>
+              </dl>
+              <p>※ 만 14세 미만 학생은 법정대리인(학부모)이 직접 작성해 주세요.</p>
+            </div>
+          </details>
+        </div>
+
+        <button type="submit" class="btn" id="submit">설명회 신청하기</button>
+        <p class="note">입력하신 정보는 설명회 안내 목적으로만 사용됩니다.</p>
+        <p class="msg" id="msg" role="alert"></p>
+      </form>
+
+      <div id="done" class="done" hidden>
+        <div class="check">✓</div>
+        <h2>신청이 완료되었습니다</h2>
+        <p class="lead">설명회 당일 뵙겠습니다. 감사합니다.</p>
+        <div>접수번호</div>
+        <div class="rid" id="rid"></div>
+        <button type="button" class="btn ghost" id="again">다른 학생 추가 신청</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="share" style="padding-top:0">
+  <div class="container">
+    <div class="card">
+      <h2>지인에게 공유하기</h2>
+      <p>설명회에 관심 있으실 분께 안내해 주세요.</p>
+      <button type="button" class="btn kakao" id="kakaoBtn">카카오톡으로 공유하기</button>
+      <button type="button" class="btn ghost" id="copyBtn">안내문과 링크 복사</button>
+      <p class="fallback">공유 창이 열리지 않으면 안내문을 복사해 보내 주세요.</p>
+    </div>
+  </div>
+</section>
+
+<footer>© SONGRIM ACADEMY 서초송림학원</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">카카오톡으로 안내하기</h3>
+    <p>아래 안내문을 복사해 카카오톡 대화방에 붙여 넣어 주세요.</p>
+    <textarea id="shareText" readonly></textarea>
+    <div class="btns">
+      <button type="button" class="btn" id="modalCopy">안내문 복사</button>
+      <button type="button" class="btn ghost" id="modalClose">닫기</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
+<script>
+  var API_URL = 'https://script.google.com/macros/s/AKfycby78awOwl74tBuQ7gcKAB7-ATuNLiHwGjxi2H-JdhjNgNnjiUboq0bdbmpR4fOVh7g/exec';
+  var OPEN = true; // 서버 상태를 아래에서 확인합니다
+  var KAKAO_KEY = '41b68362b84522f1a78d55030d91d836';
+  var SHARE = {
+    title: '2027 송림학원 예비중3 학부모 설명회',
+    speaker: '송림학원 최강 강사진',
+    date: '2026년 12월 01일 (화) 오전 11시',
+    venue: '서초송림학원 4층',
+    url: 'https://songrimedu.github.io/songrim/',
+    image: 'https://lh3.googleusercontent.com/d/1ddBbD6na4NsWCFFY3MDmrGl34HfIBT06=w1200'
+  };
+  // 카카오 개발자센터 '웹 도메인' 등록에 필요한 주소를 콘솔(F12)에 표시합니다.
+  var kakaoReady = false;
+  try {
+    if (KAKAO_KEY && window.Kakao) {
+      if (!Kakao.isInitialized()) Kakao.init(KAKAO_KEY);
+      kakaoReady = Kakao.isInitialized();
+    }
+  } catch (e) { console.warn('Kakao 초기화 실패', e); }
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('form'), msg = $('msg'), btn = $('submit');
+
+  /* 상단 '설명회 신청' 버튼: iframe 안에서 신청 영역으로 이동 */
+  $('topCta').addEventListener('click', function (e) {
+    e.preventDefault(); $('apply').scrollIntoView({behavior:'smooth'});
+  });
+
+  function uuid() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    var b = new Uint8Array(16); crypto.getRandomValues(b);
+    b[6] = (b[6] & 15) | 64; b[8] = (b[8] & 63) | 128;
+    var h = Array.prototype.map.call(b, function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+    return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);
+  }
+  var requestId = uuid(); // 같은 화면에서 재시도하면 같은 ID → 중복 접수 방지
+
+  function fmtPhone(el) {
+    el.addEventListener('input', function () {
+      var d = el.value.replace(/\D/g, '').slice(0, 11);
+      el.value = d.length < 4 ? d : d.length < 8 ? d.slice(0,3)+'-'+d.slice(3) : d.slice(0,3)+'-'+d.slice(3, d.length-4)+'-'+d.slice(-4);
+    });
+  }
+  fmtPhone($('studentPhone')); fmtPhone($('parentPhone'));
+
+  function radio(name) { var r = form.querySelector('input[name="'+name+'"]:checked'); return r ? r.value : ''; }
+  function phoneOk(v) { return /^01[016789]\d{7,8}$/.test(v.replace(/\D/g, '')); }
+  function check(p) {
+    if (!p.studentName) return ['학생명을 입력해 주세요.', 'studentName'];
+    if (!p.school) return ['학교명을 입력해 주세요.', 'school'];
+    if (!p.grade) return ['현재 학년을 선택해 주세요.', 'grade'];
+    if (!p.gender) return ['성별을 선택해 주세요.'];
+    if (!phoneOk(p.studentPhone)) return ['학생 연락처를 확인해 주세요.', 'studentPhone'];
+    if (!phoneOk(p.parentPhone)) return ['학부모 연락처를 확인해 주세요.', 'parentPhone'];
+    if (!p.registered) return ['재원 여부를 선택해 주세요.'];
+    if (!p.consent) return ['개인정보 수집·이용에 동의해 주세요.'];
+    return null;
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    msg.textContent = '';
+    var p = {
+      requestId: requestId,
+      studentName: $('studentName').value.trim(),
+      school: $('school').value.trim(),
+      grade: $('grade').value,
+      gender: radio('gender'),
+      studentPhone: $('studentPhone').value,
+      parentPhone: $('parentPhone').value,
+      registered: radio('registered'),
+      website: $('website').value,
+      consent: $('consent').checked
+    };
+    var err = check(p);
+    if (err) { msg.textContent = err[0]; if (err[1]) $(err[1]).focus(); return; }
+    btn.disabled = true; btn.textContent = '신청 중...';
+    // Apps Script(doPost)로 전송. text/plain으로 보내야 브라우저 보안(CORS)에 막히지 않습니다.
+    fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(p),
+      redirect: 'follow'
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        btn.disabled = false; btn.textContent = '설명회 신청하기';
+        if (res && res.ok) {
+          $('rid').textContent = res.receiptId;
+          form.hidden = true; $('done').hidden = false;
+          $('apply').scrollIntoView();
+        } else {
+          msg.textContent = (res && res.message) || '신청을 저장하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+        }
+      })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = '설명회 신청하기';
+        msg.textContent = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+      });
+  });
+
+  $('again').addEventListener('click', function () {
+    form.reset(); requestId = uuid(); msg.textContent = '';
+    $('done').hidden = true; form.hidden = false;
+    $('apply').scrollIntoView();
+  });
+
+  /* ---------- 공유 ---------- */
+  var shareText = [
+    '[송림학원] ' + SHARE.title,
+    '',
+    '· 연사: ' + SHARE.speaker,
+    '· 일시: ' + SHARE.date,
+    '· 장소: ' + SHARE.venue,
+    '',
+    '아래 링크에서 신청하실 수 있습니다.',
+    SHARE.url
+  ].join('\n');
+  $('shareText').value = shareText;
+
+  function toast(t) {
+    var el = $('toast'); el.textContent = t; el.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(function () { el.hidden = true; }, 2000);
+  }
+  function legacyCopy(text) {
+    var ta = $('shareText');
+    ta.value = text; ta.removeAttribute('readonly');
+    ta.focus(); ta.select(); ta.setSelectionRange(0, text.length);
+    var ok = false; try { ok = document.execCommand('copy'); } catch (_) {}
+    ta.setAttribute('readonly', ''); ta.blur();
+    return ok;
+  }
+  function copyText(text, onFail) {
+    function fallback() { if (legacyCopy(text)) toast('안내문이 복사되었습니다.'); else onFail(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast('안내문이 복사되었습니다.'); }, fallback);
+    } else { fallback(); }
+  }
+  function openModal() { $('modal').hidden = false; }
+  function closeModal() { $('modal').hidden = true; }
+
+  function kakaoShare() {
+    var link = { mobileWebUrl: SHARE.url, webUrl: SHARE.url };
+    var desc = SHARE.date + '\n' + SHARE.venue;
+    if (SHARE.image) {
+      Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: { title: SHARE.title, description: desc, imageUrl: SHARE.image, link: link },
+        buttons: [{ title: '설명회 신청하기', link: link }]
+      });
+    } else {
+      Kakao.Share.sendDefault({
+        objectType: 'text',
+        text: '[송림학원] ' + SHARE.title + '\n' + desc,
+        link: link,
+        buttonTitle: '설명회 신청하기'
+      });
+    }
+  }
+
+  // 1순위 카카오톡 공유(SDK) → 2순위 휴대폰 공유창 → 3순위 안내문 복사 창
+  $('kakaoBtn').addEventListener('click', function () {
+    if (kakaoReady) {
+      try { kakaoShare(); return; } catch (e) { console.warn('카카오 공유 실패', e); }
+    }
+    if (navigator.share) {
+      navigator.share({ title: SHARE.title, text: shareText }).catch(function (e) {
+        if (!e || e.name !== 'AbortError') openModal();
+      });
+    } else { openModal(); }
+  });
+  $('copyBtn').addEventListener('click', function () {
+    copyText(shareText, function () { openModal(); toast('자동 복사가 안 되어 안내문 창을 열었습니다.'); });
+  });
+  $('modalCopy').addEventListener('click', function () {
+    copyText(shareText, function () {
+      var ta = $('shareText'); ta.removeAttribute('readonly'); ta.focus(); ta.select();
+      toast('안내문을 길게 눌러 복사해 주세요.');
+    });
+  });
+  $('modalClose').addEventListener('click', closeModal);
+  $('modal').addEventListener('click', function (e) { if (e.target === this) closeModal(); });
+
+  // 먼저 신청 양식을 보여 주고, 서버에서 접수 마감(closeRegistration) 상태면 마감 안내로 바꿉니다.
+  form.hidden = false;
+  fetch(API_URL + '?status=1', { redirect: 'follow' })
+    .then(function (r) { return r.json(); })
+    .then(function (s) {
+      if (s && s.open === false) { form.hidden = true; $('closed').hidden = false; }
+    })
+    .catch(function () { /* 상태 확인 실패 시 양식 유지 (서버가 다시 한 번 확인함) */ });
+</script>
 </body>
 </html>
