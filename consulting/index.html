@@ -554,4 +554,25 @@
   function allClosed() { return !form.querySelector('input[name="sessionIds"]:not(:disabled)'); }
   function showClosed() { form.hidden = true; $('closed').hidden = false; }
   // 시작 시각이 지난 과목은 바로 마감 표시
-  Array.prototype.forEach.ca
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="sessionIds"]'), function (el) {
+    if (Date.now() >= Date.parse(el.getAttribute('data-start'))) closeSubject(el);
+  });
+  form.hidden = false;
+  if (allClosed()) showClosed();
+  // 서버에서 전체 마감·정원 마감 여부 확인
+  if (API_READY) {
+    fetch(API_URL + '?status=1', { redirect: 'follow' })
+      .then(function (r) { return r.json(); })
+      .then(function (s) {
+        if (!s) return;
+        (s.sessions || []).forEach(function (x) {
+          var el = form.querySelector('input[name="sessionIds"][value="' + x.id + '"]');
+          if (el && x.open === false) closeSubject(el);
+        });
+        if (s.open === false || allClosed()) showClosed();
+      })
+      .catch(function () { /* 상태 확인 실패 시 양식 유지 (서버가 다시 확인함) */ });
+  }
+</script>
+</body>
+</html>
